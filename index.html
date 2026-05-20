@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S. S. Sancheti & Associates | Chartered Accountants | Mumbai</title>
+  <meta name="description" content="S. S. Sancheti & Associates – Chartered Accountants in Mumbai. Tax, Audit, FEMA, Advisory and CFO Services since 2013." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Color Tokens ── */
+    :root {
+      --navy:        #0B2545;
+      --navy-mid:    #0e2f56;
+      --blue:        #1565C0;
+      --blue-mid:    #1976D2;
+      --blue-light:  #42A5F5;
+      --blue-pale:   #E3F2FD;
+      --blue-xpale:  #EFF6FF;
+      --orange:      #F37920;
+      --orange-dark: #D96510;
+      --orange-light: #FF9A45;
+      --orange-pale: #FFF3E8;
+      --orange-cream:#FEF9F5;
+      --green:       #55B848;
+      --green-light: #6DC962;
+      --green-pale:  #EBF7EA;
+      --white:       #FFFFFF;
+      --off-white:   #FAFBFF;
+      --warm-cream:  #FFF8F3;
+      --text:        #0B1C2D;
+      --text-mid:    #2C3E50;
+      --text-muted:  #5D7A8A;
+      --border:      #D0DFF0;
+      --border-light:#EAF1F8;
+      --shadow-sm:   0 2px 16px rgba(11,37,69,0.10);
+      --shadow:      0 8px 40px rgba(11,37,69,0.14);
+      --shadow-lg:   0 20px 60px rgba(11,37,69,0.20);
+      --radius:      14px;
+      --radius-sm:   8px;
+      --ease:        cubic-bezier(.4,0,.2,1);
+      --t:           0.32s;
+      --ff-head:     'Merriweather', Georgia, serif;
+      --ff-body:     'Nunito', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); background: var(--white); color: var(--text); overflow-x: hidden; line-height: 1.75; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--off-white); }
+    ::-webkit-scrollbar-thumb { background: var(--blue-light); border-radius: 3px; }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── Typography Utils ── */
+    .label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 10px;
+    }
+    .h2 {
+      font-family: var(--ff-head); font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 700; color: var(--navy); line-height: 1.22; margin-bottom: 16px;
+    }
+    .h2 em { font-style: italic; color: var(--orange); }
+    .lead {
+      font-size: 1rem; color: var(--text-mid); max-width: 600px;
+      line-height: 1.85; text-align: justify;
+    }
+    .rule {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      border-radius: 2px; margin-bottom: 28px;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 50px;
+      font-family: var(--ff-body); font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 0.3px; cursor: pointer; border: none;
+      transition: all var(--t) var(--ease); text-decoration: none;
+    }
+    .btn-blue { background: var(--orange); color: #fff; }
+    .btn-blue:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(243,121,32,.35); }
+    .btn-orange { background: var(--orange); color: #fff; }
+    .btn-orange:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(243,121,32,.35); }
+    .btn-outline { background: transparent; color: rgba(255,255,255,0.9); border: 2px solid rgba(255,255,255,0.5); }
+    .btn-outline:hover { background: rgba(255,255,255,0.15); border-color: #fff; color:#fff; }
+
+    /* ══════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════ */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--t), box-shadow var(--t), padding var(--t);
+      padding: 10px 0;
+    }
+    #navbar.scrolled {
+      border-color: var(--border-light);
+      box-shadow: 0 4px 30px rgba(20,88,134,.12);
+    }
+    .nav-inner { display: flex; align-items: center; gap: 16px; }
+
+    .nav-logo-wrap {
+      display: flex; align-items: center; gap: 10px;
+      flex-shrink: 0; text-decoration: none;
+    }
+    .nav-logo-img { height: 50px; width: auto; object-fit: contain; }
+    .nav-divider-v { width: 1.5px; height: 40px; background: var(--border); flex-shrink: 0; margin: 0 4px; }
+    .nav-brand { display: flex; flex-direction: column; line-height: 1.2; }
+    .nav-brand-name {
+      font-family: var(--ff-head); font-size: 1rem; font-weight: 700;
+      color: var(--blue); letter-spacing: -0.2px;
+    }
+    .nav-brand-tag {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--orange);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; margin-left: 6px; }
+    .nav-links li a {
+      position: relative; font-size: 0.86rem; font-weight: 600;
+      color: var(--text-mid); padding: 7px 13px; border-radius: 8px;
+      transition: color var(--t), background var(--t); display: inline-block;
+    }
+    .nav-links li a::after {
+      content: ''; position: absolute; bottom: 3px; left: 13px; right: 13px;
+      height: 2.5px; background: var(--orange); border-radius: 2px;
+      transform: scaleX(0); transform-origin: left; transition: transform 0.25s var(--ease);
+    }
+    .nav-links li a:hover, .nav-links li a.active { color: var(--blue); }
+    .nav-links li a:hover::after, .nav-links li a.active::after { transform: scaleX(1); }
+    .nav-links li a.active { font-weight: 700; background: var(--orange-pale); color: var(--orange-dark); }
+
+    .nav-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    .nav-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; border: 1.5px solid var(--border);
+      color: var(--text-mid); transition: all var(--t); text-decoration: none;
+    }
+    .nav-icon:hover { background: var(--blue); color: #fff; border-color: var(--blue); transform: scale(1.07); }
+    .nav-icon.wa:hover { background: #25D366; border-color: #25D366; }
+    .nav-cta {
+      padding: 9px 20px; font-size: 0.83rem; font-weight: 700;
+      border-radius: 50px; background: var(--orange); color: #fff;
+      transition: all var(--t); white-space: nowrap; text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--orange-dark); box-shadow: 0 4px 16px rgba(243,121,32,.35); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 1001; flex-shrink: 0; }
+    .hamburger span { display: block; width: 23px; height: 2px; background: var(--blue); border-radius: 2px; transition: all var(--t); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; z-index: 998;
+      background: rgba(11,37,69,0.98); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-family: var(--ff-head); font-size: 1.8rem; font-weight: 700; color: rgba(255,255,255,0.9); font-style: italic; transition: color 0.2s; letter-spacing: 0.5px; }
+    .mobile-nav a:hover { color: var(--orange); }
+
+    /* ══════════════════════════════════
+       HERO
+    ══════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0B2545 0%, #0e3166 55%, #1B1464 100%);
+      position: relative; display: flex; align-items: center;
+      overflow: hidden; padding-top: 72px;
+    }
+    .hero-geo { position: absolute; inset: 0; pointer-events: none; }
+    .hero-geo::before {
+      content: ''; position: absolute; top: -120px; right: -120px;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, rgba(243,121,32,0.18) 0%, transparent 65%);
+    }
+    .hero-geo::after {
+      content: ''; position: absolute; bottom: -80px; left: -40px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(85,184,72,0.10) 0%, transparent 70%);
+    }
+    .hero-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .hero-layout {
+      display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center;
+      position: relative; z-index: 2; min-height: calc(100vh - 72px); padding: 56px 0;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(243,121,32,.18); border: 1px solid rgba(243,121,32,.4);
+      border-radius: 50px; padding: 6px 16px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--orange-light); margin-bottom: 26px;
+    }
+    .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
+
+    .hero-title {
+      font-family: var(--ff-head); font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 900; color: #FFFFFF; line-height: 1.08; margin-bottom: 6px;
+    }
+    .hero-title em { font-style: italic; color: var(--orange-light); display: block; }
+    .hero-sub {
+      font-family: var(--ff-head); font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      font-weight: 300; color: rgba(255,255,255,0.60); letter-spacing: 0.5px; margin-bottom: 24px;
+    }
+    .hero-tagline {
+      font-size: 0.97rem; color: rgba(255,255,255,0.78); max-width: 480px;
+      line-height: 1.85; margin-bottom: 38px; text-align: justify;
+      border-left: 3.5px solid var(--orange); padding-left: 16px;
+    }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Right cards */
+    .hero-cards { display: flex; flex-direction: column; gap: 14px; }
+    .hcard {
+      background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius); padding: 22px 26px;
+      display: flex; gap: 18px; align-items: flex-start;
+      backdrop-filter: blur(10px);
+      transition: all var(--t);
+      opacity: 0; transform: translateX(32px);
+      animation: slideIn .5s var(--ease) forwards;
+    }
+    .hcard:nth-child(1){animation-delay:.15s} .hcard:nth-child(2){animation-delay:.30s}
+    .hcard:nth-child(3){animation-delay:.45s} .hcard:nth-child(4){animation-delay:.60s}
+    @keyframes slideIn { to { opacity:1; transform:translateX(0); } }
+    .hcard:hover { border-color: var(--orange); box-shadow: 0 8px 30px rgba(243,121,32,.25); transform: translateX(-4px); background: rgba(255,255,255,0.12); }
+    .hcard-icon {
+      width: 50px; height: 50px; border-radius: 12px; background: rgba(243,121,32,0.18);
+      border: 1px solid rgba(243,121,32,0.3); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    }
+    .hcard-num { font-family: var(--ff-head); font-size: 1.6rem; font-weight: 900; color: #FFFFFF; line-height: 1; }
+    .hcard-lbl { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px; color: var(--orange-light); margin-top: 2px; text-transform: uppercase; }
+    .hcard-desc { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-top: 5px; text-align: justify; }
+
+    /* ── Ticker ── */
+    .ticker { background: var(--orange); padding: 11px 0; overflow: hidden; }
+    .ticker-track { display: flex; white-space: nowrap; animation: ticker 38s linear infinite; }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 18px;
+      font-size: 0.73rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,.90); padding: 0 26px;
+    }
+    .ticker-sep { color: rgba(255,255,255,0.55); }
+
+    /* ══════════════════════════════════
+       ABOUT
+    ══════════════════════════════════ */
+    #about { padding: 110px 0; background: var(--warm-cream); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 80px; align-items: center; }
+    .about-card {
+      background: var(--blue); border-radius: 20px; padding: 48px 44px;
+      position: relative; overflow: hidden;
+    }
+    .about-card::before {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 240px; height: 240px; border-radius: 50%;
+      background: rgba(243,121,32,.15);
+    }
+    .about-card::after {
+      content: ''; position: absolute; bottom: -40px; left: -40px;
+      width: 160px; height: 160px; border-radius: 50%;
+      background: rgba(85,184,72,.10);
+    }
+    .quote-mark { font-family: var(--ff-head); font-size: 5.5rem; line-height: .6; color: var(--orange); opacity: .4; display: block; margin-bottom: -8px; }
+    .about-quote { font-family: var(--ff-head); font-style: italic; font-size: 1.22rem; color: rgba(255,255,255,.93); line-height: 1.65; margin-bottom: 26px; text-align: justify; position: relative; z-index: 1; }
+    .about-author { font-size: 0.7rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange-light); position: relative; z-index: 1; }
+    .about-floater {
+      position: absolute; bottom: -24px; right: -18px;
+      background: var(--white); border-radius: 14px; padding: 18px 22px;
+      box-shadow: var(--shadow); display: flex; align-items: center; gap: 14px; min-width: 175px;
+    }
+    .fl-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--orange-pale); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .fl-num { font-family: var(--ff-head); font-size: 1.6rem; font-weight: 900; color: var(--navy); line-height: 1; }
+    .fl-txt { font-size: 0.66rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+    .about-body p { font-size: 0.94rem; color: var(--text-mid); line-height: 1.85; text-align: justify; margin-bottom: 14px; }
+    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 30px; }
+    .pillar {
+      background: var(--white); border: 1.5px solid var(--border-light); border-radius: var(--radius-sm);
+      padding: 15px; display: flex; gap: 12px; align-items: flex-start; transition: all var(--t);
+    }
+    .pillar:hover { border-color: var(--blue); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+    .pillar-ico { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .pillar-txt { font-size: 0.82rem; color: var(--text-mid); line-height: 1.55; text-align: justify; }
+
+    /* ══════════════════════════════════
+       SERVICES
+    ══════════════════════════════════ */
+    #services { padding: 110px 0; background: var(--white); }
+    .svc-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; gap: 24px; flex-wrap: wrap; }
+    .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .svc {
+      background: var(--white); border: 1.5px solid var(--border-light);
+      border-radius: var(--radius); padding: 34px 28px;
+      transition: all var(--t); position: relative; overflow: hidden; cursor: default;
+    }
+    .svc::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      transform: scaleX(0); transform-origin: left; transition: transform var(--t);
+    }
+    .svc:hover { border-color: var(--blue); box-shadow: var(--shadow); transform: translateY(-6px); }
+    .svc:hover::before { transform: scaleX(1); }
+    .svc-featured { background: linear-gradient(145deg, #D96510 0%, #F37920 60%, #FF9A45 100%); border-color: #D96510; }
+    .svc-featured:hover { border-color: #c45a0e; filter: brightness(1.06); }
+    .svc-featured .svc-num { color: rgba(255,255,255,.12); }
+    .svc-featured .svc-icon { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.18); }
+    .svc-featured .svc-title { color: var(--white); }
+    .svc-featured .svc-desc { color: rgba(255,255,255,.68); }
+    .svc-featured .stag { color: var(--orange-light); background: rgba(243,121,32,.12); border-color: rgba(243,121,32,.25); }
+    .svc-num { font-family: var(--ff-head); font-size: 2.4rem; font-weight: 900; color: var(--blue-pale); line-height: 1; margin-bottom: 14px; }
+    .svc-icon { width: 50px; height: 50px; border-radius: 12px; background: var(--orange-pale); border: 1px solid rgba(243,121,32,.18); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 18px; }
+    .svc-title { font-family: var(--ff-head); font-size: 1.18rem; font-weight: 700; color: var(--blue); margin-bottom: 11px; }
+    .svc-desc { font-size: 0.86rem; color: var(--text-mid); line-height: 1.75; text-align: justify; margin-bottom: 20px; }
+    .svc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .stag { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.3px; color: var(--blue-mid); background: var(--blue-pale); border: 1px solid var(--border); border-radius: 50px; padding: 4px 11px; }
+
+    /* ══════════════════════════════════
+       OUR APPROACH (ex Why-Us)
+    ══════════════════════════════════ */
+    #approach { padding: 110px 0; background: var(--blue-xpale); }
+    .approach-intro { text-align: center; margin-bottom: 60px; }
+    .approach-intro .lead { margin: 0 auto; text-align: center; }
+    .approach-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .ap-card {
+      background: var(--white); border: 1.5px solid var(--border-light);
+      border-radius: var(--radius); padding: 34px 28px; transition: all var(--t);
+    }
+    .ap-card:hover { border-color: var(--orange); box-shadow: 0 8px 40px rgba(243,121,32,0.18); transform: translateY(-5px); }
+    .ap-icon { width: 54px; height: 54px; border-radius: 14px; background: var(--orange-pale); border: 1px solid rgba(243,121,32,.2); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 22px; }
+    .ap-title { font-family: var(--ff-head); font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .ap-text { font-size: 0.86rem; color: var(--text-mid); line-height: 1.75; text-align: justify; }
+    .svc-title { color: var(--navy) !important; }
+
+    /* ══════════════════════════════════
+       INDUSTRIES
+    ══════════════════════════════════ */
+    #industries { padding: 100px 0; background: var(--warm-cream); }
+    .ind-head { text-align: center; margin-bottom: 54px; }
+    .ind-head .lead { margin: 0 auto; text-align: center; }
+    .ind-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+    .ind-card {
+      background: var(--off-white); border: 1.5px solid var(--border-light);
+      border-radius: var(--radius); padding: 26px 16px; text-align: center; transition: all var(--t); cursor: default;
+    }
+    .ind-card:hover { background: var(--orange); border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 8px 30px rgba(243,121,32,0.30); }
+    .ind-card:hover .ind-box { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); }
+    .ind-card:hover .ind-name { color: var(--white); }
+    .ind-box { width: 54px; height: 54px; border-radius: 14px; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 14px; transition: all var(--t); }
+    .ind-name { font-family: var(--ff-head); font-size: 0.9rem; font-weight: 700; color: var(--blue); transition: color var(--t); line-height: 1.4; }
+
+    /* ══════════════════════════════════
+       RESOURCES
+    ══════════════════════════════════ */
+    #resources { padding: 100px 0; background: var(--blue-pale); border-top: 3px solid var(--orange); border-bottom: 3px solid var(--orange); }
+    .res-head { margin-bottom: 50px; }
+    .res-head .lead { text-align: justify; }
+    .res-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 18px; }
+    .res-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 26px 20px;
+      display: flex; flex-direction: column; gap: 11px;
+      text-decoration: none; transition: all var(--t);
+    }
+    .res-card:hover { border-color: var(--blue); box-shadow: var(--shadow); transform: translateY(-4px); }
+    .res-icon { width: 46px; height: 46px; border-radius: 12px; background: var(--blue-pale); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .res-title { font-family: var(--ff-head); font-size: 0.97rem; font-weight: 700; color: var(--blue); }
+    .res-desc { font-size: 0.78rem; color: var(--text-mid); line-height: 1.65; text-align: justify; flex: 1; }
+    .res-link { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; color: var(--orange); text-transform: uppercase; display: flex; align-items: center; gap: 4px; }
+    .tools-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    .tool-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); padding: 18px 20px;
+      display: flex; align-items: center; gap: 14px; text-decoration: none; transition: all var(--t);
+    }
+    .tool-card:hover { border-color: var(--blue); box-shadow: var(--shadow-sm); }
+    .tool-ico { width: 40px; height: 40px; border-radius: 10px; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .tool-nm { font-size: 0.88rem; font-weight: 700; color: var(--blue); }
+    .tool-sb { font-size: 0.73rem; color: var(--text-muted); line-height: 1.5; text-align: justify; }
+    .tool-badge { margin-left: auto; font-size: 0.63rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--orange); background: var(--orange-pale); border: 1px solid rgba(243,121,32,.25); border-radius: 50px; padding: 3px 10px; white-space: nowrap; flex-shrink: 0; }
+
+    /* ══════════════════════════════════
+       CONTACT
+    ══════════════════════════════════ */
+    #contact { padding: 110px 0; background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; margin-top: 50px; }
+    .contact-item { display: flex; gap: 20px; align-items: flex-start; padding: 22px 0; border-bottom: 1px solid var(--border-light); }
+    .contact-item:last-child { border: none; }
+    .c-icon { width: 46px; height: 46px; border-radius: 12px; background: var(--orange-pale); border: 1px solid rgba(243,121,32,.2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .c-lbl { font-size: 0.66rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+    .c-val { font-family: var(--ff-head); font-size: 0.98rem; font-weight: 500; color: var(--text); line-height: 1.55; }
+    .c-val a { color: var(--text); transition: color var(--t); }
+    .c-val a:hover { color: var(--blue); }
+    .cta-panel { background: linear-gradient(145deg, #D96510 0%, #F37920 60%, #FF9A45 100%); border-radius: 22px; padding: 46px 38px; position: sticky; top: 96px; }
+    .cta-title { font-family: var(--ff-head); font-size: 1.8rem; font-weight: 900; color: var(--white); line-height: 1.2; margin-bottom: 14px; }
+    .cta-title em { font-style: italic; color: var(--orange-light); }
+    .cta-desc { font-size: 0.9rem; color: rgba(255,255,255,.62); line-height: 1.85; margin-bottom: 30px; text-align: justify; }
+    .cta-btns { display: flex; flex-direction: column; gap: 11px; }
+    .cta-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 13px 20px; border-radius: 50px; font-family: var(--ff-body); font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: all var(--t); }
+    .cta-gold { background: var(--navy); color: var(--white); }
+    .cta-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(11,37,69,.4); background: var(--navy-mid); }
+    .cta-wa { background: rgba(37,211,102,.12); color: #4ADE80; border: 1.5px solid rgba(37,211,102,.25); }
+    .cta-wa:hover { background: rgba(37,211,102,.22); }
+    .cta-li { background: rgba(100,180,255,.1); color: #93C5FD; border: 1.5px solid rgba(100,180,255,.2); }
+    .cta-li:hover { background: rgba(100,180,255,.18); }
+
+    /* ══════════════════════════════════
+       ETHICS NOTICE BANNER
+    ══════════════════════════════════ */
+    .ethics-banner {
+      background: var(--green-pale); border: 1px solid rgba(85,184,72,.3);
+      border-radius: var(--radius-sm); padding: 14px 20px; margin-top: 24px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .ethics-banner-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .ethics-banner-text { font-size: 0.78rem; color: #2d6b27; line-height: 1.6; text-align: justify; }
+    .ethics-banner-text strong { color: #1e5219; }
+
+    /* ══════════════════════════════════
+       FOOTER
+    ══════════════════════════════════ */
+    footer { background: #080E1C; padding: 60px 0 28px; border-top: 3px solid var(--orange); }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-brand-name { font-family: var(--ff-head); font-size: 1.25rem; font-weight: 900; color: var(--white); margin-bottom: 4px; }
+    .footer-brand-tag { font-size: 0.58rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    .footer-desc { font-size: 0.85rem; color: rgba(255,255,255,.38); line-height: 1.85; max-width: 310px; text-align: justify; }
+    .footer-social { display: flex; gap: 8px; margin-top: 22px; }
+    .fsb { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: rgba(255,255,255,.4); transition: all var(--t); text-decoration: none; }
+    .fsb:hover { background: var(--orange); color: var(--white); border-color: var(--orange); transform: scale(1.1); }
+    .footer-col-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.86rem; color: rgba(255,255,255,.38); transition: color var(--t); display: flex; align-items: center; gap: 5px; }
+    .footer-links a::before { content: '›'; opacity: 0; transition: opacity var(--t); }
+    .footer-links a:hover { color: var(--orange-light); }
+    .footer-links a:hover::before { opacity: 1; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-size: 0.76rem; color: rgba(255,255,255,.2); }
+    .footer-copy span { color: var(--orange); }
+    .footer-disc { font-size: 0.7rem; color: rgba(255,255,255,.15); font-style: italic; }
+
+    /* ══════════════════════════════════
+       FLOATING BUTTONS
+    ══════════════════════════════════ */
+    .floats { position: fixed; bottom: 28px; right: 28px; z-index: 999; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .fl { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; text-decoration: none; transition: all var(--t); box-shadow: 0 4px 20px rgba(0,0,0,.22); position: relative; }
+    .fl::before { content: attr(data-tip); position: absolute; right: calc(100% + 10px); background: rgba(7,22,39,.96); color: #fff; font-family: var(--ff-body); font-size: 0.72rem; font-weight: 600; white-space: nowrap; padding: 5px 11px; border-radius: 6px; opacity: 0; pointer-events: none; transition: opacity .2s; }
+    .fl:hover::before { opacity: 1; }
+    .fl-wa { background: #25D366; color: #fff; }
+    .fl-wa:hover { background: #20bd59; transform: scale(1.08); }
+    .fl-li { background: #0A66C2; color: #fff; }
+    .fl-li:hover { background: #0857a8; transform: scale(1.08); }
+    .fl-top { width: 40px; height: 40px; background: var(--white); border: 2px solid var(--border); color: var(--blue); cursor: pointer; font-size: 0.95rem; }
+    .fl-top:hover { background: var(--blue); color: #fff; border-color: var(--blue); transform: scale(1.08); }
+
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .rd1{transition-delay:.08s} .rd2{transition-delay:.16s} .rd3{transition-delay:.24s}
+    .rd4{transition-delay:.32s} .rd5{transition-delay:.40s}
+
+    /* ══ RESPONSIVE ══ */
+    @media(max-width:1060px){
+      .hero-layout{grid-template-columns:1fr;padding:56px 0 40px;min-height:auto}
+      .hero-cards{display:grid;grid-template-columns:1fr 1fr}
+      .about-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
+      .about-floater{right:0}
+      .cta-panel{position:static}
+      .svc-grid{grid-template-columns:repeat(2,1fr)}
+      .res-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none} .nav-divider-v{display:none}
+      .hamburger{display:flex} .nav-cta{display:none}
+      .approach-grid{grid-template-columns:1fr 1fr}
+      .ind-grid{grid-template-columns:repeat(2,1fr)}
+      .pillars{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr;gap:36px}
+      .footer-bottom{flex-direction:column;text-align:center}
+      .tools-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:540px){
+      .hero-cards{grid-template-columns:1fr}
+      .svc-grid,.approach-grid{grid-template-columns:1fr}
+      .ind-grid{grid-template-columns:1fr 1fr}
+      .res-grid{grid-template-columns:1fr}
+      .hero-cta{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo-wrap">
+          <img src="data:image/png;base64,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" alt="ICAI CA India Logo" class="nav-logo-img" />
+        </a>
+        <div class="nav-divider-v"></div>
+        <a href="#hero" class="nav-brand" style="text-decoration:none;">
+          <span class="nav-brand-name">S. S. Sancheti &amp; Associates</span>
+          <span class="nav-brand-tag">Chartered Accountants &middot; Mumbai</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#industries">Sectors</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a class="nav-icon wa" href="https://wa.me/919819688677?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20CA%20services." target="_blank" title="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.11.554 4.13 1.52 5.89L0 24l6.26-1.49A11.98 11.98 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.6c-1.93 0-3.72-.52-5.27-1.42l-.38-.22-3.93.94.99-3.82-.25-.39A9.555 9.555 0 012.4 12c0-5.302 4.314-9.6 9.6-9.6 5.286 0 9.6 4.298 9.6 9.6 0 5.302-4.314 9.6-9.6 9.6z"/></svg>
+          </a>
+          <a class="nav-icon" href="https://www.linkedin.com/in/casancheti/" target="_blank" title="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#contact" class="nav-cta">Consult Us &rarr;</a>
+          <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about"      onclick="closeMobile()">About</a>
+    <a href="#services"   onclick="closeMobile()">Services</a>
+    <a href="#industries" onclick="closeMobile()">Sectors</a>
+    <a href="#resources"  onclick="closeMobile()">Resources</a>
+    <a href="#contact"    onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-geo"></div>
+    <div class="hero-dots"></div>
+    <div class="container" style="position:relative;z-index:2;width:100%;">
+      <div class="hero-layout">
+        <div>
+          <div class="hero-badge"><span class="badge-dot"></span>Established 2013 &middot; Mumbai, India</div>
+          <h1 class="hero-title">S. S. <em>Sancheti</em> &amp; Associates</h1>
+          <p class="hero-sub">Chartered Accountants &mdash; Tax &middot; Audit &middot; Advisory &middot; CFO Services</p>
+          <p class="hero-tagline">Beyond Compliance. Towards Value Creation. Providing practical, partner-led financial and regulatory advisory to businesses, professionals and family-managed enterprises for over a decade.</p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-blue"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.5 11.5 19.79 19.79 0 011.57 2.74 2 2 0 013.54 1H6.5a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.5a16 16 0 006.29 6.29l.88-.88a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Get in Touch</a>
+            <a href="#services" class="btn btn-outline">Our Services &rarr;</a>
+          </div>
+        </div>
+        <div class="hero-cards">
+          <div class="hcard"><div class="hcard-icon">🏢</div><div><div class="hcard-num">2013</div><div class="hcard-lbl">Year Established</div><div class="hcard-desc">Over a decade of CA practice spanning tax, audit, FEMA and advisory services across Mumbai and India.</div></div></div>
+          <div class="hcard"><div class="hcard-icon">📋</div><div><div class="hcard-num">5</div><div class="hcard-lbl">Service Verticals</div><div class="hcard-desc">Audit, Tax, FEMA, Advisory and Virtual CFO services — comprehensive and coordinated under one firm.</div></div></div>
+          <div class="hcard"><div class="hcard-icon">🌐</div><div><div class="hcard-num">FEMA</div><div class="hcard-lbl">Certified Expertise</div><div class="hcard-desc">Specialised FEMA and international advisory backed by certified professional qualification in foreign exchange laws.</div></div></div>
+          <div class="hcard"><div class="hcard-icon">🏭</div><div><div class="hcard-num">8+</div><div class="hcard-lbl">Industry Sectors</div><div class="hcard-desc">Serving startups, MSMEs, HNIs, real estate, manufacturing, media and family-managed enterprises.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker"><div class="ticker-track">
+    <span class="ticker-item">Income Tax Advisory <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Statutory Audit <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">GST Compliance <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">FEMA Advisory <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Virtual CFO Services <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Tax Litigation Support <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Business Structuring <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Due Diligence <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">RBI Compliance <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Income Tax Advisory <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Statutory Audit <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">GST Compliance <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">FEMA Advisory <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Virtual CFO Services <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Tax Litigation Support <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Business Structuring <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">Due Diligence <span class="ticker-sep">&diams;</span></span>
+    <span class="ticker-item">RBI Compliance <span class="ticker-sep">&diams;</span></span>
+  </div></div>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about"><div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal" style="position:relative;padding-bottom:30px;">
+        <div class="about-card">
+          <span class="quote-mark">&ldquo;</span>
+          <p class="about-quote">We don&rsquo;t just calculate the numbers; we interpret them to create a roadmap for your success.</p>
+          <div class="about-author">&mdash; S. S. Sancheti &amp; Associates</div>
+        </div>
+        <div class="about-floater"><div class="fl-icon">🏢</div><div><div class="fl-num">10+</div><div class="fl-txt">Years of Practice</div></div></div>
+      </div>
+      <div class="about-body reveal">
+        <span class="label">About the Firm</span>
+        <h2 class="h2">Who <em>We Are</em></h2>
+        <div class="rule"></div>
+        <p class="lead">S. S. Sancheti &amp; Associates is a Chartered Accountancy firm based in Mumbai, providing end-to-end tax, audit, regulatory, advisory and CFO services to businesses, professionals, startups, corporates and family-managed enterprises.</p>
+        <p style="margin-top:16px;">Established in 2013, the firm is built on the philosophy of <strong>practical advice, strong technical depth, and client-centric execution.</strong> We work with clients as professional advisors and long-term business enablers.</p>
+        <p>Our approach blends domain knowledge, regulatory expertise, and commercial understanding, helping clients navigate evolving tax laws, financial regulations and business challenges with clarity and confidence.</p>
+        <div class="pillars">
+          <div class="pillar"><span class="pillar-ico">🧠</span><span class="pillar-txt">Strong technical foundation with a business-first approach</span></div>
+          <div class="pillar"><span class="pillar-ico">🎯</span><span class="pillar-txt">Personalised solutions, not template-based advice</span></div>
+          <div class="pillar"><span class="pillar-ico">🔍</span><span class="pillar-txt">Proactive risk identification at every engagement stage</span></div>
+          <div class="pillar"><span class="pillar-ico">🤝</span><span class="pillar-txt">Long-term professional partnership with promoters and management</span></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ═══ SERVICES ═══ -->
+  <section id="services"><div class="container">
+    <div class="svc-head">
+      <div>
+        <span class="label">What We Do</span>
+        <h2 class="h2">Our Service <em>Verticals</em></h2>
+        <p class="lead">Comprehensive professional services, structured to address your compliance, regulatory, and strategic financial needs.</p>
+      </div>
+      <a href="#contact" class="btn btn-blue" style="flex-shrink:0;">Consult Us &rarr;</a>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-num">01</div><div class="svc-icon">⚖️</div>
+        <h3 class="svc-title">Audit &amp; Assurance</h3>
+        <p class="svc-desc">Independent audit and assurance services covering statutory, tax, internal and management audits, aimed at strengthening controls, transparency and governance across your organisation.</p>
+        <div class="svc-tags"><span class="stag">Statutory Audit</span><span class="stag">Tax Audit</span><span class="stag">Internal Audit</span><span class="stag">Due Diligence</span><span class="stag">SOP Review</span></div>
+      </div>
+      <div class="svc reveal rd1">
+        <div class="svc-num">02</div><div class="svc-icon">📋</div>
+        <h3 class="svc-title">Tax &amp; Regulatory</h3>
+        <p class="svc-desc">Direct and indirect tax advisory, return filing, representation before tax authorities, GST compliance, audit and reconciliation, and litigation support across all appellate levels including NFAC.</p>
+        <div class="svc-tags"><span class="stag">Income Tax</span><span class="stag">GST</span><span class="stag">Appeals &amp; Litigation</span><span class="stag">Assessments</span></div>
+      </div>
+      <div class="svc svc-featured reveal rd2">
+        <div class="svc-num">03</div><div class="svc-icon">🌐</div>
+        <h3 class="svc-title">FEMA &amp; International</h3>
+        <p class="svc-desc">Comprehensive FEMA advisory, RBI reporting and documentation, cross-border transaction structuring and international regulatory compliance — backed by certified expertise in foreign exchange laws and regulations.</p>
+        <div class="svc-tags"><span class="stag">FEMA Advisory</span><span class="stag">RBI Reporting</span><span class="stag">Cross-border</span><span class="stag">Regulatory Filings</span></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-num">04</div><div class="svc-icon">💼</div>
+        <h3 class="svc-title">Advisory &amp; Consulting</h3>
+        <p class="svc-desc">Business structuring and restructuring, transaction support, financial and tax due diligence, company law advisory, M&amp;A support and strategic financial counsel to promoters and management teams.</p>
+        <div class="svc-tags"><span class="stag">Business Structuring</span><span class="stag">M&amp;A Support</span><span class="stag">Company Law</span><span class="stag">Due Diligence</span></div>
+      </div>
+      <div class="svc reveal rd1">
+        <div class="svc-num">05</div><div class="svc-icon">📊</div>
+        <h3 class="svc-title">Accounting Outsourcing</h3>
+        <p class="svc-desc">End-to-end bookkeeping, payroll processing, MIS reporting, accounts receivable and payable management and statutory compliance support — designed for SMEs and growing businesses.</p>
+        <div class="svc-tags"><span class="stag">Bookkeeping</span><span class="stag">Payroll</span><span class="stag">MIS Reporting</span><span class="stag">AR / AP</span></div>
+      </div>
+      <div class="svc reveal rd2">
+        <div class="svc-num">06</div><div class="svc-icon">🏦</div>
+        <h3 class="svc-title">CFO / Shared CFO Services</h3>
+        <p class="svc-desc">Virtual CFO expertise for startups, family businesses and growth-stage companies — covering financial planning, cash flow management, investor reporting and internal control design and implementation.</p>
+        <div class="svc-tags"><span class="stag">Financial Planning</span><span class="stag">Cash Flow</span><span class="stag">Investor Reporting</span><span class="stag">Internal Controls</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ═══ OUR APPROACH ═══ -->
+  <section id="approach"><div class="container">
+    <div class="approach-intro">
+      <span class="label">Our Professional Approach</span>
+      <h2 class="h2">How We <em>Work</em></h2>
+      <div class="rule" style="margin:0 auto 16px;"></div>
+      <p class="lead">Our professional methodology is built on integrity, technical depth and a genuine understanding of client needs across industry sectors.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="ap-card reveal"><div class="ap-icon">🤵</div><h3 class="ap-title">Partner-led Engagements</h3><p class="ap-text">Partner involvement is ensured on all key assignments, providing direct oversight, accountability and depth of professional expertise at every stage of the engagement.</p></div>
+      <div class="ap-card reveal rd1"><div class="ap-icon">🏅</div><h3 class="ap-title">Multi-disciplinary Practice</h3><p class="ap-text">Experience spanning tax, audit, FEMA, company law and CFO advisory enables an integrated, multi-disciplinary perspective on complex business and regulatory matters.</p></div>
+      <div class="ap-card reveal rd2"><div class="ap-icon">🚀</div><h3 class="ap-title">Startup to Scale-up Support</h3><p class="ap-text">Structured to support clients at every growth stage — from entity formation and early compliance through expansion, regulatory complexity and strategic transactions.</p></div>
+      <div class="ap-card reveal rd3"><div class="ap-icon">💡</div><h3 class="ap-title">Practical Implementation Focus</h3><p class="ap-text">Advisory is grounded in practical implementation aligned with business realities — focusing on actionable guidance rather than purely theoretical interpretations.</p></div>
+      <div class="ap-card reveal rd4"><div class="ap-icon">🔄</div><h3 class="ap-title">Integrated Service Delivery</h3><p class="ap-text">Coordinated delivery across tax, accounts and regulatory work minimises compliance friction and ensures consistency, accuracy and timeliness across all engagements.</p></div>
+      <div class="ap-card reveal rd5"><div class="ap-icon">🛡️</div><h3 class="ap-title">Confidentiality &amp; Integrity</h3><p class="ap-text">Integrity and strict confidentiality are maintained at the core of all professional engagements, in adherence to the ICAI Code of Ethics and applicable professional standards.</p></div>
+    </div>
+  </div></section>
+
+  <!-- ═══ INDUSTRIES ═══ -->
+  <section id="industries"><div class="container">
+    <div class="ind-head">
+      <span class="label">Sector Expertise</span>
+      <h2 class="h2">Industries <em>Served</em></h2>
+      <div class="rule" style="margin:0 auto 16px;"></div>
+      <p class="lead">The firm has experience serving a diverse range of business sectors and entity types across India.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card reveal"><div class="ind-box">🏭</div><div class="ind-name">Manufacturing &amp; Trading</div></div>
+      <div class="ind-card reveal rd1"><div class="ind-box">💼</div><div class="ind-name">Services &amp; Professionals</div></div>
+      <div class="ind-card reveal rd2"><div class="ind-box">🚀</div><div class="ind-name">Startups &amp; MSMEs</div></div>
+      <div class="ind-card reveal rd3"><div class="ind-box">🛒</div><div class="ind-name">E-commerce &amp; Digital</div></div>
+      <div class="ind-card reveal"><div class="ind-box">🏢</div><div class="ind-name">Real Estate &amp; Infrastructure</div></div>
+      <div class="ind-card reveal rd1"><div class="ind-box">🎬</div><div class="ind-name">Media &amp; Entertainment</div></div>
+      <div class="ind-card reveal rd2"><div class="ind-box">🤲</div><div class="ind-name">Trusts, NGOs &amp; Institutions</div></div>
+      <div class="ind-card reveal rd3"><div class="ind-box">👤</div><div class="ind-name">HNIs &amp; Private Clients</div></div>
+    </div>
+  </div></section>
+
+  <!-- ═══ RESOURCES ═══ -->
+  <section id="resources"><div class="container">
+    <div class="res-head">
+      <span class="label">Useful Resources</span>
+      <h2 class="h2">Tax &amp; Regulatory <em>Quick Links</em></h2>
+      <p class="lead" style="margin-top:8px;">Frequently used government portals, tax calculators and compliance tools — provided as a professional convenience to clients and visitors.</p>
+    </div>
+    <div class="res-grid">
+      <a class="res-card reveal" href="https://www.incometax.gov.in" target="_blank" rel="noopener"><div class="res-icon">🏛️</div><div class="res-title">Income Tax Portal</div><div class="res-desc">File ITR, check refund status, view AIS, respond to notices and manage all income tax compliances online via the official e-filing portal.</div><div class="res-link">Visit Portal &rarr;</div></a>
+      <a class="res-card reveal rd1" href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/taxCalc" target="_blank" rel="noopener"><div class="res-icon">🧮</div><div class="res-title">Income Tax Calculator</div><div class="res-desc">Official Income Tax Department calculator to compare Old vs New Tax Regime, compute total tax liability and plan advance tax payments.</div><div class="res-link">Calculate &rarr;</div></a>
+      <a class="res-card reveal rd2" href="https://www.gst.gov.in" target="_blank" rel="noopener"><div class="res-icon">📦</div><div class="res-title">GST Portal</div><div class="res-desc">File GSTR returns, manage GST registrations, claim input tax credit and track notices and orders from the GSTN on the official portal.</div><div class="res-link">Visit Portal &rarr;</div></a>
+      <a class="res-card reveal rd3" href="https://www.mca.gov.in" target="_blank" rel="noopener"><div class="res-icon">🏢</div><div class="res-title">MCA21 Portal</div><div class="res-desc">Company law filings, ROC compliance, director KYC (DIR-3), charge management and annual return and financial statement filings.</div><div class="res-link">Visit Portal &rarr;</div></a>
+    </div>
+    <div class="tools-grid">
+      <a class="tool-card reveal" href="https://www.tdscpc.gov.in" target="_blank" rel="noopener"><div class="tool-ico">📑</div><div><div class="tool-nm">TDS / TRACES Portal</div><div class="tool-sb">Download Form 16/16A, check TDS credit and file correction statements to reconcile TDS deductions.</div></div><span class="tool-badge">TDS</span></a>
+      <a class="tool-card reveal rd1" href="https://rbi.org.in" target="_blank" rel="noopener"><div class="tool-ico">🏦</div><div><div class="tool-nm">Reserve Bank of India</div><div class="tool-sb">FEMA regulations, RBI circulars, NBFC norms, ECB guidelines and RBI reporting requirements for cross-border transactions.</div></div><span class="tool-badge">FEMA</span></a>
+      <a class="tool-card reveal rd2" href="https://incometaxindia.gov.in/Pages/tax-services/advance-tax-calculator.aspx" target="_blank" rel="noopener"><div class="tool-ico">📅</div><div><div class="tool-nm">Advance Tax Calculator</div><div class="tool-sb">Compute advance tax instalments due on 15 Jun, 15 Sep, 15 Dec and 15 Mar — avoid interest u/s 234B and 234C.</div></div><span class="tool-badge">Planning</span></a>
+      <a class="tool-card reveal rd3" href="https://cbic-gst.gov.in/gst-goods-services-rates.html" target="_blank" rel="noopener"><div class="tool-ico">🔍</div><div><div class="tool-nm">GST Rate Finder</div><div class="tool-sb">Look up applicable GST rates on goods and services by HSN or SAC code from the official CBIC classification list.</div></div><span class="tool-badge">GST</span></a>
+    </div>
+  </div></section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact"><div class="container">
+    <span class="label">Get in Touch</span>
+    <h2 class="h2">Contact <em>Us</em></h2>
+    <div class="rule"></div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item reveal"><div class="c-icon">📍</div><div><div class="c-lbl">Office Address</div><div class="c-val">F33, A Wing, Express Zone,<br />W.E. Highway, Goregaon (E), Mumbai</div></div></div>
+
+        <div class="contact-item reveal rd2"><div class="c-icon">✉️</div><div><div class="c-lbl">Email</div><div class="c-val"><a href="mailto:siddharth@sanchetiassociates.in">siddharth@sanchetiassociates.in</a></div></div></div>
+        <div class="contact-item reveal rd3"><div class="c-icon">🌐</div><div><div class="c-lbl">Website</div><div class="c-val"><a href="https://www.sanchetiassociates.in" target="_blank">www.sanchetiassociates.in</a></div></div></div>
+        <div class="ethics-banner reveal">
+          <span class="ethics-banner-icon">ℹ️</span>
+          <div class="ethics-banner-text">
+            <strong>Professional Notice:</strong> This website is published in accordance with the ICAI Code of Ethics and applicable guidelines. It is intended solely to provide professional information about the firm and its services. Nothing herein constitutes solicitation of clients or advertisement in violation of the Chartered Accountants Act, 1949.
+          </div>
+        </div>
+      </div>
+      <div class="cta-panel reveal">
+        <div class="cta-title">Schedule a <em>Consultation</em></div>
+        <p class="cta-desc">Whether you require tax planning, audit support, FEMA advisory or a professional CFO partner — reach out to arrange a consultation at your convenience.</p>
+        <div class="cta-btns">
+          <a href="mailto:siddharth@sanchetiassociates.in" class="cta-btn cta-gold">&#9993;&nbsp; Send us an Email</a>
+          <a href="https://wa.me/919819688677?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20CA%20services." target="_blank" class="cta-btn cta-wa"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.11.554 4.13 1.52 5.89L0 24l6.26-1.49A11.98 11.98 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.6c-1.93 0-3.72-.52-5.27-1.42l-.38-.22-3.93.94.99-3.82-.25-.39A9.555 9.555 0 012.4 12c0-5.302 4.314-9.6 9.6-9.6 5.286 0 9.6 4.298 9.6 9.6 0 5.302-4.314 9.6-9.6 9.6z"/></svg> Chat on WhatsApp</a>
+          <a href="https://www.linkedin.com/in/casancheti/" target="_blank" class="cta-btn cta-li"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> Connect on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">S. S. Sancheti &amp; Associates</div>
+          <div class="footer-brand-tag">Chartered Accountants &middot; Mumbai &middot; Est. 2013</div>
+          <p class="footer-desc">Beyond Compliance. Towards Value Creation. Providing professional tax, audit, FEMA, advisory and CFO services to businesses and individuals across India since 2013.</p>
+          <div class="footer-social">
+            <a class="fsb" href="https://wa.me/919819688677" target="_blank" title="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.11.554 4.13 1.52 5.89L0 24l6.26-1.49A11.98 11.98 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.6c-1.93 0-3.72-.52-5.27-1.42l-.38-.22-3.93.94.99-3.82-.25-.39A9.555 9.555 0 012.4 12c0-5.302 4.314-9.6 9.6-9.6 5.286 0 9.6 4.298 9.6 9.6 0 5.302-4.314 9.6-9.6 9.6z"/></svg></a>
+            <a class="fsb" href="https://www.linkedin.com/in/casancheti/" target="_blank" title="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a class="fsb" href="mailto:siddharth@sanchetiassociates.in" title="Email">&#9993;</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Our Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Audit &amp; Assurance</a></li>
+            <li><a href="#services">Tax &amp; Regulatory</a></li>
+            <li><a href="#services">FEMA &amp; International</a></li>
+            <li><a href="#services">Advisory &amp; Consulting</a></li>
+            <li><a href="#services">Accounting Outsourcing</a></li>
+            <li><a href="#services">CFO / Shared CFO Services</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="https://www.incometax.gov.in" target="_blank">Income Tax Portal</a></li>
+            <li><a href="https://www.gst.gov.in" target="_blank">GST Portal</a></li>
+            <li><a href="https://www.mca.gov.in" target="_blank">MCA21 Portal</a></li>
+            <li><a href="https://www.tdscpc.gov.in" target="_blank">TRACES (TDS)</a></li>
+            <li><a href="https://rbi.org.in" target="_blank">Reserve Bank of India</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 <span>S. S. Sancheti &amp; Associates</span>. All rights reserved.</p>
+        <p class="footer-disc">For Professional Information Only &middot; Mumbai, India</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floats">
+    <a class="fl fl-wa" href="https://wa.me/919819688677?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20CA%20services." target="_blank" data-tip="Chat on WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.11.554 4.13 1.52 5.89L0 24l6.26-1.49A11.98 11.98 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.6c-1.93 0-3.72-.52-5.27-1.42l-.38-.22-3.93.94.99-3.82-.25-.39A9.555 9.555 0 012.4 12c0-5.302 4.314-9.6 9.6-9.6 5.286 0 9.6 4.298 9.6 9.6 0 5.302-4.314 9.6-9.6 9.6z"/></svg></a>
+    <a class="fl fl-li" href="https://www.linkedin.com/in/casancheti/" target="_blank" data-tip="LinkedIn Profile"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <button class="fl fl-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-tip="Back to top" aria-label="Back to top">&uarr;</button>
+  </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); }, {passive:true});
+    function toggleMobile() { document.getElementById('mobileNav').classList.toggle('open'); document.getElementById('hamburger').classList.toggle('open'); }
+    function closeMobile() { document.getElementById('mobileNav').classList.remove('open'); document.getElementById('hamburger').classList.remove('open'); }
+    const sections = ['hero','about','services','industries','resources','contact'];
+    const navAs = document.querySelectorAll('.nav-links li a');
+    function onScroll() {
+      const scrollY = window.scrollY + 130;
+      let current = 'hero';
+      sections.forEach(id => { const el = document.getElementById(id); if (el && el.offsetTop <= scrollY) current = id; });
+      navAs.forEach(a => { const href = a.getAttribute('href').replace('#',''); a.classList.toggle('active', href === current); });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+    const ro = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);} }); }, {threshold:0.10});
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  </script>
+</body>
+</html>
